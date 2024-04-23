@@ -43,10 +43,9 @@ SELECT name, population, area FROM World
 WHERE area >= 3000000 OR population >= 25000000
 
 --ex12
-/*SELECT DISTINCT author_id AS id FROM Views
-WHERE author_id in (SELECT view_id FROM Views WHERE author_id = view_id)
+SELECT DISTINCT author_id AS id FROM Views
+WHERE author_id = viewer_id
 ORDER BY author_id ASC;
-*/
 
 --ex13
 SELECT part, assembly_step FROM parts_assembly
