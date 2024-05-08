@@ -97,16 +97,23 @@ from Transactions
 group by month, country
 
 --ex7
-with products_in_1st_year_tb as (
-select
-product_id, min(year) as first_year
-from Sales
-group by product_id)
+WITH min_year
+AS (
+ SELECT product_id
+  ,min(year) AS minyear
+ FROM Sales
+ GROUP BY product_id
+ )
+SELECT a.product_id
+ ,a.year AS first_year
+ ,a.quantity
+ ,a.price
+FROM Sales AS a
+JOIN min_year AS b ON a.product_id = b.product_id
+WHERE b.minyear = a.year
 
-select a.product_id, a.first_year, b.quantity, b.price
-from products_in_1st_year_tb as a
-left join Sales as b on a.product_id = b.product_id
 
+ 
 --ex8
 select
 customer_id
