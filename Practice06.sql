@@ -106,7 +106,6 @@ group by product_id)
 select a.product_id, a.first_year, b.quantity, b.price
 from products_in_1st_year_tb as a
 left join Sales as b on a.product_id = b.product_id
-group by a.product_id, a.first_year
 
 --ex8
 select
